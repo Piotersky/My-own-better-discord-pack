@@ -1,0 +1,30 @@
+{
+	"changeLogs": {
+		"BDFDB": "2.0.6",
+		"BetterFriendList": "1.3.9",
+		"BetterNsfwTag": "1.2.7",
+		"CharCounter": "1.5.7",
+		"CompleteTimestamps": "1.6.0",
+		"CopyRawMessage": "1.1.2",
+		"CreationDate": "1.4.6",
+		"FriendNotifications": "1.8.1",
+		"RemoveBlockedUsers": "1.3.7",
+		"ServerCounter": "1.0.3",
+		"ServerDetails": "1.1.1",
+		"ShowHiddenChannels": "3.0.4",
+		"Translator": "2.3.2",
+		"dfvfd": "1.0.3"
+	},
+	"choices": {
+		"toastPosition": "right"
+	},
+	"general": {
+		"showToasts": true,
+		"showSupportBadges": true,
+		"useChromium": false
+	},
+	"hashes": {
+		"0BDFDB.data.json": "ef16ee02931acf78dd96101847569138e84fbdfb",
+		"0BDFDB.raw.css": "d5ce2dee72b046d17c121e10e368985c71bbaced"
+	}
+}
