@@ -2,7 +2,7 @@
 	"choices": {
 		"received": {
 			"input": "auto",
-			"output": "pl"
+			"output": "$discord"
 		},
 		"sent": {
 			"input": "auto",
@@ -10,8 +10,8 @@
 		}
 	},
 	"engines": {
-		"backup": "itranslate",
-		"translator": "googleapi"
+		"translator": "googleapi",
+		"backup": "----"
 	},
 	"exceptions": {
 		"wordStart": [
@@ -20,8 +20,8 @@
 	},
 	"general": {
 		"addTranslateButton": true,
+		"usePerChatTranslation": true,
 		"sendOriginalMessage": false,
-		"showOriginalMessage": false,
-		"usePerChatTranslation": true
+		"showOriginalMessage": false
 	}
 }

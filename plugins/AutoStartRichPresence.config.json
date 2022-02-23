@@ -1,5 +1,24 @@
 {
     "settings": {
-        "lastChangelogVersionSeen": "2.0.4"
-    }
+        "lastChangelogVersionSeen": "2.0.5",
+        "rpcEventInjection": true,
+        "activeProfileID": 0
+    },
+    "profiles": [
+        {
+            "name": "New Profile",
+            "clientID": "935198808969719810",
+            "details": "W CpsCounter.plugin.js",
+            "state": "Robię paczke better dc",
+            "largeImageKey": "test",
+            "enableStartTime": false,
+            "largeImageText": "test",
+            "smallImageKey": "test",
+            "smallImageText": "test",
+            "button1Label": "",
+            "button1URL": "",
+            "button2Label": "Menel szblozębny",
+            "button2URL": "https://www.google.com"
+        }
+    ]
 }

@@ -1104,6 +1104,7 @@
         "Roboto",
         "Roboto Condensed",
         "Roboto Mono",
+        "Roboto Serif",
         "Roboto Slab",
         "Rochester",
         "Rock 3D",
@@ -1360,6 +1361,6 @@
         "Zilla Slab",
         "Zilla Slab Highlight"
     ],
-    "lastFetchTime": 1642015820569,
+    "lastFetchTime": 1645626184992,
     "font": "Amiko"
 }

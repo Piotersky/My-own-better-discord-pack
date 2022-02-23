@@ -1,25 +1,38 @@
 /**
  * @name Addons for the pack
- * @version 1.3.0
+ * @version 1.4.0
  * @description Addons for the pack :)
  * @author Piotersky#3873
  * @website 
 */
 
+:root {
+	--background-color: #0000004b;
+}
 
 /* Reklama na górnym pasku */
 .typeWindows-2-g3UY > .wordmark-2u86JB:before {
-	content: "Paczka By Piotersky";
+	content: "Paczka By PioterSky";
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     text-shadow: 0 0 3px #000;
   }
   .typeWindows-2-g3UY > .wordmark-2u86JB:after {
-	content: "1.3.0";
-    color: rgba(255, 255, 255, 0.3);
+	content: "1.4.0";
+    color: rgba(255, 255, 255, 0.5);
     font-family: var(--code-font);
     font-size: 12px;
   }
+
+/* Usunięcie drugiego X */
+#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > div > div > div.sidebar-1tnWFu > nav > div.scroller-WSmht3.thin-31rlnD.scrollerBase-_bVAAt.fade-1R6FHN > ul > li > div > div > svg {
+	display: none;
+}
+
+#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > div > div > div.chat-2ZfjoI > div.content-1jQy2l > div > nav > div.scroller-WSmht3.thin-31rlnD.scrollerBase-_bVAAt.fade-1R6FHN > ul > li > div > div > div > svg {
+	display: none;
+}
+
 /* Dodatkowe ikony w ustawieniach */
 	#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div:nth-child(2) > div > div.sidebarRegion-1VBisG > div > nav > div > div.bd-emotes-tab.item-3XjbnG.themed-2-lozF:before {
 		content: url(https://img.icons8.com/material/24/ffffff/happy--v1.png);
@@ -31,10 +44,156 @@
 		text-align: center;
 		content: "♥";
 	}
+
+/* Okrągłe menu wiadomości */
+.menu-1QACrS, .colorDefault-CDqZdO { 
+    border-radius: 15px; 
+}
+
+/* Dół listy serwerów bo wyglądało tak: 🤢 */
+.scroller-3X7KbA {
+	contain: unset;
+	padding-bottom: 190px;
+  }
+  .scroller-3X7KbA::before {
+	  content: "";
+	  position: fixed;
+	  bottom: 0;
+	  width: 72px;
+	  height: 190px;
+	  background: "";
+	  z-index: 1;
+  }
+  .tutorialContainer-2jwoiB {
+	  position: fixed;
+	  bottom: 0;
+	  z-index: 1;
+  }
+  .tutorialContainer-2jwoiB + .listItem-3SmSlK {
+	  position: fixed;
+	  bottom: 58px;
+	  contain: none;
+	  z-index: 1;
+  }
+
+  #app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > nav > ul > div.scroller-3X7KbA.none-2-_0dP.scrollerBase-_bVAAt > div:nth-child(8) > div.listItemWrapper-3d87LP > div > svg > foreignObject > div {
+	  background-color: black;
+  }
+
+  #app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > nav > ul > div.scroller-3X7KbA.none-2-_0dP.scrollerBase-_bVAAt > div.tutorialContainer-2jwoiB > div.listItem-3SmSlK > div > div > svg > foreignObject > div {
+	  background-color: black;
+  }
+
+  #app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > nav > ul > div.scroller-3X7KbA.none-2-_0dP.scrollerBase-_bVAAt > div:nth-child(8) > div.listItemWrapper-3d87LP > div > svg > foreignObject > div:hover {
+	background-color: #2780e6;
+  }
+
+  #app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > nav > ul > div.scroller-3X7KbA.none-2-_0dP.scrollerBase-_bVAAt > div.tutorialContainer-2jwoiB > div.listItem-3SmSlK > div > div > svg > foreignObject > div:hover {
+	background-color: #2780e6;
+  }
+
+  #app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > nav > ul > div.unreadMentionsIndicatorBottom-3RJMnQ > div {
+	  position: relative;
+	  right: 100px;
+  }
+
+/* Server dm's 🤢 */
+
+#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > div > div > div.chat-2ZfjoI > div.content-1jQy2l > div > div.header-2Kx1US.ChannelDms-channelmembers-header.topPill-3DJJNV {
+	background: none;
+	background-color: #0000004b;
+}
+
+#MemberCount h2 {
+	background-image: url(https://files.fm/thumb_show.php?i=9ftt2ryve);
+	height: auto;
+	width: auto;
+	/* https://clearvision.gitlab.io/images/sapphire.jpg */
+	/* https://files.fm/thumb_show.php?i=9ftt2ryve */
+	/*https://files.fm/thumb.php?i=vwtfm9r7m*/
+}
+
+#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div > div > div > div > div.chat-2ZfjoI > div.content-1jQy2l > div > nav > div.scroller-WSmht3.thin-31rlnD.scrollerBase-_bVAAt.fade-1R6FHN {
+	background-color: #0000004b;
+}
+
+#popout_785 > div > div > div.ChannelDms-channelpopout-content > section > div.messagesWrapper-RpOMA3.group-spacing-16 > div {
+	background: url(https://files.fm/thumb_show.php?i=9ftt2ryve);
+	height: auto;
+	width: auto;
+}
+
+/* Resizable */
+.ChannelDms-channelpopout-popout {
+    color: var(--header-primary) !important;
+    border-radius: 8px;
+    resize: horizontal;
+    overflow: hidden;
+    direction: rtl
+}
+
+.ChannelDms-channelpopout-popout.ChannelDms-channelpopout-collapsed {
+    width: 100px !important
+}
+
+.ChannelDms-channelpopout-channelIcon,
+.ChannelDms-channelpopout-headerStatus {
+    margin: 0 8px !important
+}
+
+.ChannelDms-channelpopout-headerName {
+    font-size: 16px !important;
+    font-family: var(--font-display)
+}
+
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg,
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg>.grid-1aWVsE>.imageWrapper-oMkQl4,
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg>.imageWrapper-oMkQl4 {
+    height: auto !important;
+    width: unset !important
+}
+
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg>.grid-1aWVsE>.imageWrapper-oMkQl4 img,
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg>.imageWrapper-oMkQl4 img,
+.ChannelDms-channelpopout-popout .embedWrapper-1MtIDg>img:not(.embedGalleryImageElement-2VNYIN) {
+    position: relative;
+    height: auto !important;
+    width: unset !important;
+    max-width: 100%
+}
+
+.ChannelDms-channelpopout-collapseButton {
+    left: 10px !important;
+    top: 2px !important;
+    opacity: 0
+}
+
+.ChannelDms-channelpopout-collapseButton:hover,
+.ChannelDms-channelpopout-popout.ChannelDms-channelpopout-collapsed .ChannelDms-channelpopout-collapseButton {
+    opacity: 1
+}
+
+.ChannelDms-channelpopout-popout>* {
+    direction: ltr
+}
+
+.ChannelDms-channelpopout-removeButton {
+    top: 0 !important;
+    right: 0 !important;
+    opacity: 0
+}
+
+.ChannelDms-channelpopout-popout .button-1yVL_7 {
+    border-radius: 0;
+    width: 100%;
+    height: 36px
+}
+
 /* Reklama w ustawieniach */
-#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div:nth-child(2) > div > div.sidebarRegion-1VBisG > div > nav > div > div.info-1sUqUG > span:nth-child(4):after {
-		content: "Paczka by Piostersky 1.3.0";
-	}
+#app-mount > div.app-3xd6d0 > div > div.layers-OrUESM.layers-1YQhyW > div:nth-child(2) > div > div.sidebarRegion-1VBisG > div > nav > div > div.info-3pQQBb > span:nth-child(4):after {
+	display: inline-flex;	
+	content: "Paczka by PioterSky 1.4.0";
+}
 
 
 	/* Przydatne ikony */
@@ -52,6 +211,7 @@
 		https://clearvision.gitlab.io/icons/close.svg
 		https://clearvision.gitlab.io/icons/settings.svg
 		https://clearvision.gitlab.io/icons/person_add.svg
+		https://clearvision.gitlab.io/icons/close.svg
 	/* pliki
 		https://clearvision.gitlab.io/icons/cloud_download.svg
 		https://clearvision.gitlab.io/icons/share.svg

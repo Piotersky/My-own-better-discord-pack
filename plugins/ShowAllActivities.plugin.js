@@ -1,10 +1,11 @@
 /**
- * @name InvisibleTyping
- * @author Strencher
- * @version 1.2.0
- * @description Enhanced version of silent typing.
- * @source https://github.com/Strencher/BetterDiscordStuff/blob/master/InvisibleTyping/InvisibleTyping.plugin.js
- * @updateUrl https://raw.githubusercontent.com/Strencher/BetterDiscordStuff/master/InvisibleTyping/InvisibleTyping.plugin.js
+ * @name ShowAllActivities
+ * @version 1.0.0
+ * @author Strencher, Juby210
+ * @description See every status a user has enabled. Original made by Juby210#0577.
+ * @source https://github.com/Strencher/BetterDiscordStuff/tree/master/ShowAllActivities
+ * @updateUrl https://raw.githubusercontent.com/Strencher/BetterDiscordStuff/master/ShowAllActivities/ShowAllActivities.plugin.js
+ * @invite gvA2ree
  */
 /*@cc_on
 @if (@_jscript)
@@ -31,36 +32,47 @@
 /* Generated Code */
 const config = {
 	"info": {
-		"name": "InvisibleTyping",
+		"name": "ShowAllActivities",
+		"version": "1.0.0",
 		"authors": [{
-			"name": "Strencher",
-			"discord_id": "415849376598982656",
-			"github_username": "Strencher",
-			"twitter_username": "Strencher3"
-		}],
-		"version": "1.2.0",
-		"description": "Enhanced version of silent typing.",
-		"github": "https://github.com/Strencher/BetterDiscordStuff/blob/master/InvisibleTyping/InvisibleTyping.plugin.js",
-		"github_raw": "https://raw.githubusercontent.com/Strencher/BetterDiscordStuff/master/InvisibleTyping/InvisibleTyping.plugin.js"
-	},
-	"build": {
-		"copy": true,
-		"zlibrary": true,
-		"production": true,
-		"release": {
-			"source": true,
-			"readme": true,
-			"public": true
-		}
+				"name": "Strencher",
+				"discord_id": "415849376598982656",
+				"github_username": "Strencher",
+				"twitter_username": "Strencher3"
+			},
+			{
+				"name": "Juby210",
+				"discord_id": "324622488644616195",
+				"github_username": "Juby210"
+			}
+		],
+		"description": "See every status a user has enabled. Original made by Juby210#0577.",
+		"github": "https://github.com/Strencher/BetterDiscordStuff/tree/master/ShowAllActivities",
+		"github_raw": "https://raw.githubusercontent.com/Strencher/BetterDiscordStuff/master/ShowAllActivities/ShowAllActivities.plugin.js",
+		"invite": "gvA2ree"
 	},
 	"changelog": [{
-		"type": "fixed",
-		"title": "Fixed",
+		"title": "Rewrite",
+		"type": "improved",
 		"items": [
-			"Fixed button for last canary update.",
-			"Hide inside the profile settings."
+			"The plugin was rewritting and works fine again."
 		]
-	}]
+	}],
+	"build": {
+		"zlibrary": true,
+		"copy": true,
+		"production": false,
+		"alias": {},
+		"release": {
+			"public": true,
+			"source": true,
+			"readme": true,
+			"previews": [{
+				"name": "Activity Carosell",
+				"src": "assets/preview.png"
+			}]
+		}
+	}
 };
 function buildPlugin([BasePlugin, PluginApi]) {
 	const module = {
@@ -274,7 +286,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 			}
 		};
 		var __webpack_modules__ = {
-			646: (module, __webpack_exports__, __webpack_require__) => {
+			761: (module, __webpack_exports__, __webpack_require__) => {
 				__webpack_require__.d(__webpack_exports__, {
 					Z: () => __WEBPACK_DEFAULT_EXPORT__
 				});
@@ -283,42 +295,54 @@ function buildPlugin([BasePlugin, PluginApi]) {
 				var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()((function(i) {
 					return i[1];
 				}));
-				___CSS_LOADER_EXPORT___.push([module.id, ".InvisibleTyping-settings-panel{color:#ddd}", ""]);
+				___CSS_LOADER_EXPORT___.push([module.id, ".ShowAllActivities-wrapper-wrapper{display:flex;flex-direction:column}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls{margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;padding:5px;background:var(--background-secondary-alt);border-radius:3px;flex:1 0;margin-top:-5px}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-caret{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-caret.ShowAllActivities-wrapper-disabled{cursor:not-allowed;opacity:.3}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-caret:hover:not(.ShowAllActivities-wrapper-disabled){background:var(--background-modifier-accent)}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-carosell{display:flex;align-items:center}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-carosell .ShowAllActivities-wrapper-dot{margin:0 4px;width:10px;cursor:pointer;height:10px;border-radius:100px;background:var(--interactive-muted);transition:background .3s;opacity:.6}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-carosell .ShowAllActivities-wrapper-dot:hover:not(.ShowAllActivities-wrapper-selected){opacity:1}.ShowAllActivities-wrapper-wrapper .ShowAllActivities-wrapper-controls .ShowAllActivities-wrapper-carosell .ShowAllActivities-wrapper-dot.ShowAllActivities-wrapper-selected{opacity:1;background:var(--dot-color, var(--brand-experiment))}.ShowAllActivities-wrapper-tooltip{--background-floating: var(--background-secondary)}", ""]);
 				___CSS_LOADER_EXPORT___.locals = {
-					panel: "InvisibleTyping-settings-panel"
+					wrapper: "ShowAllActivities-wrapper-wrapper",
+					controls: "ShowAllActivities-wrapper-controls",
+					caret: "ShowAllActivities-wrapper-caret",
+					disabled: "ShowAllActivities-wrapper-disabled",
+					carosell: "ShowAllActivities-wrapper-carosell",
+					dot: "ShowAllActivities-wrapper-dot",
+					selected: "ShowAllActivities-wrapper-selected",
+					tooltip: "ShowAllActivities-wrapper-tooltip"
 				};
 				StyleLoader.append(module.id, ___CSS_LOADER_EXPORT___.toString());
 				const __WEBPACK_DEFAULT_EXPORT__ = Object.assign(___CSS_LOADER_EXPORT___, ___CSS_LOADER_EXPORT___.locals);
 			},
-			166: (module, __webpack_exports__, __webpack_require__) => {
-				__webpack_require__.d(__webpack_exports__, {
-					Z: () => __WEBPACK_DEFAULT_EXPORT__
-				});
-				var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(645);
-				var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = __webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-				var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()((function(i) {
-					return i[1];
-				}));
-				___CSS_LOADER_EXPORT___.push([module.id, ".InvisibleTyping-typingButton-invisibleTypingButton svg{color:var(--interactive-normal);overflow:visible}.InvisibleTyping-typingButton-invisibleTypingButton .InvisibleTyping-typingButton-disabledStrokeThrough{position:absolute;transform:translateX(-15px) translateY(530px) rotate(-45deg)}.InvisibleTyping-typingButton-invisibleTypingButton{margin-top:3px;background:transparent}.InvisibleTyping-typingButton-invisibleTypingButton:hover:not(.InvisibleTyping-typingButton-disabled) svg{color:var(--interactive-hover)}.InvisibleTyping-typingButton-invisibleTypingTooltip{display:inline-flex}", ""]);
-				___CSS_LOADER_EXPORT___.locals = {
-					invisibleTypingButton: "InvisibleTyping-typingButton-invisibleTypingButton",
-					disabledStrokeThrough: "InvisibleTyping-typingButton-disabledStrokeThrough",
-					disabled: "InvisibleTyping-typingButton-disabled",
-					invisibleTypingTooltip: "InvisibleTyping-typingButton-invisibleTypingTooltip"
-				};
-				StyleLoader.append(module.id, ___CSS_LOADER_EXPORT___.toString());
-				const __WEBPACK_DEFAULT_EXPORT__ = Object.assign(___CSS_LOADER_EXPORT___, ___CSS_LOADER_EXPORT___.locals);
-			},
-			954: (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+			766: (__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 				__webpack_require__.r(__webpack_exports__);
 				__webpack_require__.d(__webpack_exports__, {
-					default: () => InvisibleTyping
+					default: () => ShowAllActivities
 				});
 				const external_PluginApi_namespaceObject = PluginApi;
 				const external_BasePlugin_namespaceObject = BasePlugin;
 				var external_BasePlugin_default = __webpack_require__.n(external_BasePlugin_namespaceObject);
-				const utils_namespaceObject = Modules["@discord/utils"];
-				const components_namespaceObject = Modules["@discord/components"];
+				const external_StyleLoader_namespaceObject = StyleLoader;
+				var external_StyleLoader_default = __webpack_require__.n(external_StyleLoader_namespaceObject);
+				var React = __webpack_require__(113);
+				function _extends() {
+					_extends = Object.assign || function(target) {
+						for (var i = 1; i < arguments.length; i++) {
+							var source = arguments[i];
+							for (var key in source)
+								if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+						}
+						return target;
+					};
+					return _extends.apply(this, arguments);
+				}
+				const createUpdateWrapper = (Component, valueProp = "value", changeProp = "onChange", valueIndex = 0) => props => {
+					const [value, setValue] = React.useState(props[valueProp]);
+					return React.createElement(Component, _extends({}, props, {
+						[valueProp]: value,
+						[changeProp]: (...args) => {
+							const value = args[valueIndex];
+							if ("function" === typeof props[changeProp]) props[changeProp](value);
+							setValue(value);
+						}
+					}));
+				};
+				const hooks_createUpdateWrapper = createUpdateWrapper;
 				var external_BdApi_React_ = __webpack_require__(113);
 				var external_BdApi_React_default = __webpack_require__.n(external_BdApi_React_);
 				const flux_namespaceObject = Modules["@discord/flux"];
@@ -349,12 +373,11 @@ function buildPlugin([BasePlugin, PluginApi]) {
 						this.settings = external_PluginApi_namespaceObject.PluginUtilities.loadSettings(pluginName, defaultSettings);
 					}
 				}
-				const package_namespaceObject = JSON.parse('{"um":{"u2":"InvisibleTyping"}}');
+				const package_namespaceObject = JSON.parse('{"um":{"u2":"ShowAllActivities"}}');
 				const Settings = new SettingsManager(package_namespaceObject.um.u2);
 				const settings = Settings;
-				var typingButton = __webpack_require__(166);
-				function _extends() {
-					_extends = Object.assign || function(target) {
+				function settings_extends() {
+					settings_extends = Object.assign || function(target) {
 						for (var i = 1; i < arguments.length; i++) {
 							var source = arguments[i];
 							for (var key in source)
@@ -362,247 +385,168 @@ function buildPlugin([BasePlugin, PluginApi]) {
 						}
 						return target;
 					};
-					return _extends.apply(this, arguments);
+					return settings_extends.apply(this, arguments);
 				}
-				function Keyboard({
-					disabled,
+				const SwitchItem = hooks_createUpdateWrapper(external_PluginApi_namespaceObject.WebpackModules.getByDisplayName("SwitchItem"));
+				const Items = [{
+					id: "showAlways",
+					name: "Show Always",
+					note: "Shows the controls bar even if only one activity is present.",
+					value: false
+				}];
+				function SettingsPanel() {
+					return external_BdApi_React_default().createElement(external_BdApi_React_default().Fragment, null, Items.map((item => external_BdApi_React_default().createElement(SwitchItem, settings_extends({}, item, {
+						value: settings.get(item.id, item.value),
+						onChange: value => settings.set(item.id, value)
+					}), item.name))));
+				}
+				var wrapper = __webpack_require__(761);
+				const icons_namespaceObject = Modules["@discord/icons"];
+				const stores_namespaceObject = Modules["@discord/stores"];
+				const components_namespaceObject = Modules["@discord/components"];
+				const i18n_namespaceObject = Modules["@discord/i18n"];
+				const colors_namespaceObject = JSON.parse('{"spotify":"#1db954","363445589247131668":"#ff0000","463097721130188830":"#d9252a","802958789555781663":"#593695","STREAMING":"#593695","562286213059444737":"#3a004b","83226320970055681":"#889afb","782685898163617802":"#889afb","356869127241072640":"#112120","367827983903490050":"#e5649d"}');
+				const constants_namespaceObject = Modules["@discord/constants"];
+				var wrapper_React = __webpack_require__(113);
+				function wrapper_extends() {
+					wrapper_extends = Object.assign || function(target) {
+						for (var i = 1; i < arguments.length; i++) {
+							var source = arguments[i];
+							for (var key in source)
+								if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+						}
+						return target;
+					};
+					return wrapper_extends.apply(this, arguments);
+				}
+				const {
+					default: UserActivity,
+					UserActivityTypes
+				} = external_PluginApi_namespaceObject.WebpackModules.getModule((m => "UserActivityContainer" === m?.default?.displayName));
+				const classes = external_PluginApi_namespaceObject.WebpackModules.getByProps("activity", "rolesList");
+				function ActivityWrapper({
+					user,
 					...props
 				}) {
-					return external_BdApi_React_default().createElement("svg", _extends({}, props, {
-						width: "25",
-						height: "25",
-						viewBox: "0 0 576 512"
-					}), external_BdApi_React_default().createElement("path", {
-						fill: "currentColor",
-						d: "M528 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM128 180v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm288 0v-40c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h232c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12z"
-					}), disabled ? external_BdApi_React_default().createElement("rect", {
-						className: typingButton.Z.disabledStrokeThrough,
-						x: "10",
-						y: "10",
-						width: "600pt",
-						height: "70px",
-						fill: "#f04747"
-					}) : null);
-				}
-				const contextmenu_namespaceObject = Modules["@discord/contextmenu"];
-				const TypingModule = external_PluginApi_namespaceObject.WebpackModules.getByProps("startTyping");
-				const removeItem = function(array, item) {
-					while (array.includes(item)) array.splice(array.indexOf(item), 1);
-					return array;
-				};
-				function InvisibleTypingContextMenu({
-					channelId
-				}) {
-					const enabled = (0, flux_namespaceObject.useStateFromStores)([settings], (() => settings.get("autoEnable", true)));
-					return external_BdApi_React_default().createElement(contextmenu_namespaceObject.Menu, {
-						navId: "invisible-typing-context-menu",
-						onClose: contextmenu_namespaceObject.closeContextMenu
-					}, external_BdApi_React_default().createElement(contextmenu_namespaceObject.MenuItem, {
-						id: "globally-disable-or-enable-typing",
-						label: enabled ? "Disable Globally" : "Enable Globally",
-						action: () => {
-							settings.set("autoEnable", !enabled);
+					const activities = (0, flux_namespaceObject.useStateFromStoresArray)([stores_namespaceObject.Status], (() => stores_namespaceObject.Status.getActivities(user.id).filter((ac => 4 !== ac.type))));
+					const [activityIndex, setActivityIndex] = (0, external_BdApi_React_.useState)(0);
+					const currentActivity = (0, external_BdApi_React_.useMemo)((() => activities[activityIndex]), [activityIndex, activities]);
+					const shouldShowControls = (0, flux_namespaceObject.useStateFromStores)([settings], (() => activities.length > 1 || settings.get("showAlways", false)), [activities]);
+					const canGo = type => {
+						if (-1 === activityIndex || 0 === activities.length || activityIndex > activities.length - 1) return false;
+						switch (type) {
+							case "backward":
+								return activityIndex > 0;
+							case "forward":
+								return activityIndex !== activities.length - 1 && activityIndex < activities.length - 1;
 						}
-					}), external_BdApi_React_default().createElement(contextmenu_namespaceObject.MenuItem, {
-						color: "colorDanger",
-						label: "Reset Config",
-						disabled: !settings.get("exclude", []).length,
-						id: "reset-config",
-						action: () => {
-							settings.set("exclude", []);
-							external_PluginApi_namespaceObject.Toasts.success("Successfully reset config for all channels.");
-						}
-					}));
-				}
-				function InvisibleTypingButton({
-					channel,
-					isEmpty
-				}) {
-					const enabled = (0, flux_namespaceObject.useStateFromStores)([settings], InvisibleTypingButton.getState.bind(this, channel.id));
-					const handleClick = (0, external_BdApi_React_.useCallback)((() => {
-						const excludeList = [...settings.get("exclude", [])];
-						if (excludeList.includes(channel.id)) {
-							removeItem(excludeList, channel.id);
-							TypingModule.stopTyping(channel.id);
-						} else {
-							excludeList.push(channel.id);
-							if (!isEmpty) TypingModule.startTyping(channel.id);
-						}
-						settings.set("exclude", excludeList);
-					}), [enabled]);
-					const handleContextMenu = (0, external_BdApi_React_.useCallback)((event => {
-						(0, contextmenu_namespaceObject.openContextMenu)(event, (() => external_BdApi_React_default().createElement(InvisibleTypingContextMenu, {
-							channelId: channel.id
-						})));
-					}), [enabled]);
-					return external_BdApi_React_default().createElement(components_namespaceObject.TooltipContainer, {
-						text: enabled ? "Typing Enabled" : "Typing Disabled",
-						position: "top",
-						className: typingButton.Z.invisibleTypingTooltip
-					}, external_BdApi_React_default().createElement("button", {
-						className: (0, utils_namespaceObject.joinClassNames)(typingButton.Z.invisibleTypingButton, {
-							enabled,
-							disabled: !enabled
-						}),
-						onClick: handleClick,
-						onContextMenu: handleContextMenu
-					}, external_BdApi_React_default().createElement(Keyboard, {
-						disabled: !enabled
-					})));
-				}
-				InvisibleTypingButton.getState = function(channelId) {
-					const isGlobal = settings.get("autoEnable", true);
-					const isExcluded = settings.get("exclude", []).includes(channelId);
-					if (isGlobal && isExcluded) return false;
-					if (isExcluded && !isGlobal) return true;
-					return isGlobal;
-				};
-				const external_StyleLoader_namespaceObject = StyleLoader;
-				var external_StyleLoader_default = __webpack_require__.n(external_StyleLoader_namespaceObject);
-				var React = __webpack_require__(113);
-				function createUpdateWrapper_extends() {
-					createUpdateWrapper_extends = Object.assign || function(target) {
-						for (var i = 1; i < arguments.length; i++) {
-							var source = arguments[i];
-							for (var key in source)
-								if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
-						}
-						return target;
 					};
-					return createUpdateWrapper_extends.apply(this, arguments);
-				}
-				const createUpdateWrapper = (Component, valueProp = "value", changeProp = "onChange", valueIndex = 0) => props => {
-					const [value, setValue] = React.useState(props[valueProp]);
-					return React.createElement(Component, createUpdateWrapper_extends({}, props, {
-						[valueProp]: value,
-						[changeProp]: (...args) => {
-							const value = args[valueIndex];
-							if ("function" === typeof props[changeProp]) props[changeProp](value);
-							setValue(value);
+					const handleSelectNext = type => (0, external_BdApi_React_.useCallback)((() => {
+						if (!canGo(type)) return;
+						switch (type) {
+							case "backward":
+								var index = activityIndex - 1;
+								break;
+							case "forward":
+								var index = activityIndex + 1;
+								break;
 						}
-					}));
-				};
-				const hooks_createUpdateWrapper = createUpdateWrapper;
-				var components_settings = __webpack_require__(646);
-				const SwitchItem = hooks_createUpdateWrapper(external_PluginApi_namespaceObject.WebpackModules.getByDisplayName("SwitchItem"));
-				function SettingsPanel() {
-					const disabledChannels = (0, flux_namespaceObject.useStateFromStores)([settings], (() => settings.get("exclude", [])));
-					return external_BdApi_React_default().createElement(external_BdApi_React_default().Fragment, null, external_BdApi_React_default().createElement(SwitchItem, {
-						note: "Automatically enables the typing indicator for each channel that isn't manually disabled.",
-						value: settings.get("autoEnable", true),
-						onChange: value => settings.set("autoEnable", value)
-					}, "Automatically enable"), external_BdApi_React_default().createElement(components_namespaceObject.Flex, {
-						justify: components_namespaceObject.Flex.Justify.END,
-						direction: components_namespaceObject.Flex.Direction.VERTICAL
-					}, external_BdApi_React_default().createElement("p", {
-						className: components_settings.Z.panel
-					}, "Current disabled channels: ", disabledChannels.length), external_BdApi_React_default().createElement(components_namespaceObject.Button, {
-						look: components_namespaceObject.Button.Looks.OUTLINED,
-						color: components_namespaceObject.Button.Colors.RED,
-						disabled: !Boolean(disabledChannels.length),
-						size: components_namespaceObject.Button.Sizes.SMALL,
-						onClick: () => {
-							settings.set("exclude", []);
-						}
-					}, "Reset")));
-				}
-				const constants_namespaceObject = Modules["@discord/constants"];
-				const stores_namespaceObject = Modules["@discord/stores"];
-				var InvisibleTyping_React = __webpack_require__(113);
-				function InvisibleTyping_extends() {
-					InvisibleTyping_extends = Object.assign || function(target) {
-						for (var i = 1; i < arguments.length; i++) {
-							var source = arguments[i];
-							for (var key in source)
-								if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
-						}
-						return target;
-					};
-					return InvisibleTyping_extends.apply(this, arguments);
-				}
-				function InvisibleTyping_defineProperty(obj, key, value) {
-					if (key in obj) Object.defineProperty(obj, key, {
-						value,
-						enumerable: true,
-						configurable: true,
-						writable: true
-					});
-					else obj[key] = value;
-					return obj;
-				}
-				const ChannelTextAreaContainer = external_PluginApi_namespaceObject.WebpackModules.find((m => "ChannelTextAreaContainer" === m?.type?.render?.displayName))?.type;
-				const ChannelTextAreaButtons = external_PluginApi_namespaceObject.WebpackModules.find((m => m.type && "ChannelTextAreaButtons" === m.type.displayName));
-				const DMChannels = [constants_namespaceObject.ChannelTypes.DM, constants_namespaceObject.ChannelTypes.GROUP_DM];
-				const canViewChannel = function(channel) {
-					if (!channel) return false;
-					if (DMChannels.includes(channel.type)) return true;
-					try {
-						return modules_namespaceObject.PermissionUtils.can(constants_namespaceObject.Permissions.SEND_MESSAGES, channel, stores_namespaceObject.Users.getCurrentUser());
-					} catch (error) {
-						external_PluginApi_namespaceObject.Logger.error("Failed to request permissions:", error);
-						return true;
+						if (index < 0 || index > activities.length) return;
+						setActivityIndex(index);
+					}), [activities, activityIndex, user]);
+					const goForward = handleSelectNext("forward");
+					const goBackward = handleSelectNext("backward");
+					if (!activities.length) return null;
+					if (!currentActivity) {
+						setActivityIndex(0);
+						return null;
 					}
-				};
-				class InvisibleTyping extends(external_BasePlugin_default()) {
-					static setUpdating(state) {
-						this._updating = state;
+					const style = {
+						"--dot-color": colors_namespaceObject[Object.keys(colors_namespaceObject).find((e => currentActivity.id?.includes(e) || currentActivity.application_id === e || currentActivity.type === constants_namespaceObject.ActivityTypes[e]))]
+					};
+					return wrapper_React.createElement("div", {
+						className: external_PluginApi_namespaceObject.Utilities.className(wrapper.Z.wrapper, {
+							[wrapper.Z.spotify]: currentActivity.id?.startsWith("spotify")
+						}),
+						style
+					}, wrapper_React.createElement(UserActivity, wrapper_extends({
+						__SAA: true
+					}, props, {
+						user,
+						activity: currentActivity,
+						type: UserActivityTypes.USER_POPOUT,
+						key: currentActivity.application_id,
+						className: external_PluginApi_namespaceObject.Utilities.className(classes.activity, "newPopoutActivityStyles")
+					})), shouldShowControls && wrapper_React.createElement("div", {
+						className: wrapper.Z.controls
+					}, wrapper_React.createElement(components_namespaceObject.Tooltip, {
+						key: "LEFT",
+						text: i18n_namespaceObject.Messages.PAGINATION_PREVIOUS,
+						tooltipClassName: wrapper.Z.tooltip,
+						spacing: 14
+					}, (props => wrapper_React.createElement("div", wrapper_extends({}, props, {
+						className: external_PluginApi_namespaceObject.Utilities.className(wrapper.Z.caret, {
+							[wrapper.Z.disabled]: !canGo("backward")
+						}),
+						onClick: goBackward
+					}), wrapper_React.createElement(icons_namespaceObject.Caret, {
+						direction: icons_namespaceObject.Caret.Directions.LEFT
+					})))), wrapper_React.createElement("div", {
+						className: wrapper.Z.carosell
+					}, activities.map(((_, i) => wrapper_React.createElement("div", {
+						key: "dot--" + i,
+						onClick: () => setActivityIndex(i),
+						className: external_PluginApi_namespaceObject.Utilities.className(wrapper.Z.dot, {
+							[wrapper.Z.selected]: i === activityIndex
+						})
+					})))), wrapper_React.createElement(components_namespaceObject.Tooltip, {
+						key: "RIGHT",
+						text: i18n_namespaceObject.Messages.PAGINATION_NEXT,
+						tooltipClassName: wrapper.Z.tooltip,
+						spacing: 14
+					}, (props => wrapper_React.createElement("div", wrapper_extends({}, props, {
+						className: external_PluginApi_namespaceObject.Utilities.className(wrapper.Z.caret, {
+							[wrapper.Z.disabled]: !canGo("forward")
+						}),
+						onClick: goForward
+					}), wrapper_React.createElement(icons_namespaceObject.Caret, {
+						direction: icons_namespaceObject.Caret.Directions.RIGHT
+					}))))));
+				}
+				var ShowAllActivities_React = __webpack_require__(113);
+				function ShowAllActivities_extends() {
+					ShowAllActivities_extends = Object.assign || function(target) {
+						for (var i = 1; i < arguments.length; i++) {
+							var source = arguments[i];
+							for (var key in source)
+								if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
+						}
+						return target;
+					};
+					return ShowAllActivities_extends.apply(this, arguments);
+				}
+				class ShowAllActivities extends(external_BasePlugin_default()) {
+					getSettingsPanel() {
+						return ShowAllActivities_React.createElement(SettingsPanel, null);
 					}
 					onStart() {
 						external_StyleLoader_default().inject();
-						external_PluginApi_namespaceObject.Utilities.suppressErrors(this.patchTextAreaButtons.bind(this), "textarea buttons patch")();
-						external_PluginApi_namespaceObject.Utilities.suppressErrors(this.patchStartTyping.bind(this), "start typing patch")();
+						this.patchUserActivityContainer();
 					}
-					getSettingsPanel() {
-						return InvisibleTyping_React.createElement(SettingsPanel, null);
-					}
-					async patchTextAreaButtons() {
-						const shouldShow = function(children, props) {
-							if ("profile_bio_input" === props.type) return false;
-							if (!Array.isArray(children)) return false;
-							if (children.some((child => child && child.type === InvisibleTyping))) return false;
-							if (!canViewChannel(props.channel)) return false;
-							return true;
-						};
-						if (ChannelTextAreaButtons) {
-							external_PluginApi_namespaceObject.Patcher.after(ChannelTextAreaButtons, "type", ((_, [props], returnValue) => {
-								const children = returnValue && returnValue.props && returnValue.props.children;
-								if (!shouldShow(children, props)) return;
-								children.unshift(InvisibleTyping_React.createElement(InvisibleTypingButton, props));
-							}));
-							this.forceUpdate();
-						} else external_PluginApi_namespaceObject.Patcher.after(ChannelTextAreaContainer, "render", ((_, [props], returnValue) => {
-							const tree = external_PluginApi_namespaceObject.Utilities.findInReactTree(returnValue, (e => e?.className?.indexOf("buttons-") > -1));
-							if (!tree || !shouldShow(tree.children, props)) return returnValue;
-							tree.children.unshift(InvisibleTyping_React.createElement(InvisibleTypingButton, InvisibleTyping_extends({}, props, {
-								isEmpty: !!props.textValue
-							})));
-						}));
-					}
-					forceUpdate() {
-						if (InvisibleTyping._updating) return;
-						InvisibleTyping.setUpdating(true);
-						external_PluginApi_namespaceObject.Patcher.after(ChannelTextAreaContainer, "render", (function() {
-							const [, , returnValue] = arguments;
-							this.unpatch();
-							InvisibleTyping.setUpdating(false);
-							const buttons = external_PluginApi_namespaceObject.Utilities.findInReactTree(returnValue, (e => e && e.type === ChannelTextAreaButtons));
-							if (!buttons) return;
-							buttons.key = Math.random().toString();
-						}));
-					}
-					async patchStartTyping() {
-						const TypingModule = external_PluginApi_namespaceObject.WebpackModules.getByProps("startTyping");
-						external_PluginApi_namespaceObject.Patcher.instead(TypingModule, "startTyping", ((_, [channelId], originalMethod) => {
-							if (InvisibleTypingButton.getState(channelId)) originalMethod(channelId);
+					patchUserActivityContainer() {
+						const UserActivityModule = external_PluginApi_namespaceObject.WebpackModules.getModule((m => "UserActivityContainer" === m?.default?.displayName));
+						external_PluginApi_namespaceObject.Patcher.after(UserActivityModule, "default", ((_, [props]) => {
+							if (props.type !== UserActivityModule.UserActivityTypes.USER_POPOUT || props.__SAA) return;
+							return ShowAllActivities_React.createElement(ActivityWrapper, ShowAllActivities_extends({
+								user: props.user
+							}, props));
 						}));
 					}
 					onStop() {
-						external_PluginApi_namespaceObject.Patcher.unpatchAll();
 						external_StyleLoader_default().remove();
-						if (ChannelTextAreaButtons) this.forceUpdate();
+						external_PluginApi_namespaceObject.Patcher.unpatchAll();
 					}
 				}
-				InvisibleTyping_defineProperty(InvisibleTyping, "_updating", false);
 			},
 			645: module => {
 				module.exports = function(cssWithMappingToString) {
@@ -682,7 +626,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 				});
 			};
 		})();
-		var __webpack_exports__ = __webpack_require__(954);
+		var __webpack_exports__ = __webpack_require__(766);
 		module.exports.LibraryPluginHack = __webpack_exports__;
 	})();
 	const PluginExports = module.exports.LibraryPluginHack;

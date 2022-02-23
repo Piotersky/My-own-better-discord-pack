@@ -306,19 +306,6 @@
 					"custom": 1,
 					"timelog": true
 				},
-				"749340270436417546": {
-					"online": 1,
-					"idle": 1,
-					"dnd": 1,
-					"playing": 1,
-					"listening": 1,
-					"streaming": 1,
-					"offline": 1,
-					"login": 1,
-					"mobile": 1,
-					"custom": 1,
-					"timelog": true
-				},
 				"754589510859489321": {
 					"online": 1,
 					"idle": 1,
@@ -500,7 +487,8 @@
 					"mobile": 1,
 					"custom": 1,
 					"timelog": true
-				}
+				},
+				"630120987861450757": {}
 			},
 			"strangers": {
 				"607329197240877057": {
@@ -517,6 +505,19 @@
 					"timelog": true
 				},
 				"607274095821979658": {
+					"online": 1,
+					"idle": 1,
+					"dnd": 1,
+					"playing": 1,
+					"listening": 1,
+					"streaming": 1,
+					"offline": 1,
+					"login": 1,
+					"mobile": 1,
+					"custom": 1,
+					"timelog": true
+				},
+				"749340270436417546": {
 					"online": 1,
 					"idle": 1,
 					"dnd": 1,
