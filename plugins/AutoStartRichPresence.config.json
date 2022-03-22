@@ -8,16 +8,16 @@
         {
             "name": "New Profile",
             "clientID": "935198808969719810",
-            "details": "W CpsCounter.plugin.js",
+            "details": "POBIERZ PACZKĘ!",
             "state": "Robię paczke better dc",
             "largeImageKey": "test",
             "enableStartTime": false,
             "largeImageText": "test",
             "smallImageKey": "test",
             "smallImageText": "test",
-            "button1Label": "",
+            "button1Label": "POBIERZ PACZKĘ!",
             "button1URL": "",
-            "button2Label": "Menel szblozębny",
+            "button2Label": "POBIERZ PACZKĘ!",
             "button2URL": "https://www.google.com"
         }
     ]

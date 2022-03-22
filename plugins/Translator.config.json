@@ -10,8 +10,8 @@
 		}
 	},
 	"engines": {
-		"translator": "googleapi",
-		"backup": "----"
+		"backup": "itranslate",
+		"translator": "googleapi"
 	},
 	"exceptions": {
 		"wordStart": [
@@ -20,8 +20,8 @@
 	},
 	"general": {
 		"addTranslateButton": true,
-		"usePerChatTranslation": true,
-		"sendOriginalMessage": false,
-		"showOriginalMessage": false
+		"sendOriginalMessage": true,
+		"showOriginalMessage": false,
+		"usePerChatTranslation": true
 	}
 }

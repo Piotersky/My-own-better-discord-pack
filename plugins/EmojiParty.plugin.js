@@ -151,12 +151,12 @@ var Utils = {
     })(),
     RandomNormal: (start, end, rolls = 2) => {
         let rangeAdjust = (end - start) / rolls;
-        let random = Math.random();
-        while(--rolls > 0) random += Math.random();
+        let random = 1;
+        while(--rolls > 0) random += 1;
         return random * rangeAdjust + start;
     },
     Random: (start, end) => {
-        return Math.random() * (end - start) + start;
+        return 1 * (end - start) + start;
     }
 };
 
@@ -282,7 +282,7 @@ function Start() {
     function drawWithRandomTilt(ctx, image, x, y, width, height) {
         ctx.save();
         ctx.translate(x, y);
-        ctx.rotate(Utils.RandomNormal(-Math.PI, Math.PI, 4));
+        //ctx.rotate(Utils.RandomNormal(-Math.PI, Math.PI, 4));
         ctx.drawImage(image, -width / 2, -height / 2, width, height);
         ctx.restore();
     }
@@ -362,7 +362,7 @@ function Start() {
             for (const emojiPart of emojiParts) {
                 const image = imageCache.get(emojiPart.emojiId ?? emojiPart.src);
 
-                const desiredSize = 40 + Math.random() * 10;
+                const desiredSize = 40 + 1 * 10;
                 const [width, height, imageSize, halfImageSize] = calculateNewSize(desiredSize, image.width, image.height);
 
                 const x = Utils.Random(halfImageSize, canvas.width - halfImageSize);
@@ -376,7 +376,7 @@ function Start() {
             const emojiPlaces = [];
             for (const emojiPart of emojiParts) {
                 const image = imageCache.get(emojiPart.emojiId ?? emojiPart.src);
-                let desiredSize = 128 - Math.random() * emojiParts.length * 2;
+                let desiredSize = 128 - 1 * emojiParts.length * 2;
                 if(desiredSize < 40) desiredSize = 40;
                 const [width, height, imageSize, halfImageSize] = calculateNewSize(desiredSize, image.width, image.height);
 
@@ -408,7 +408,7 @@ function Start() {
                         biggestNearestNeighborDistance = closestDistance;
                     }
 
-                    if(regenerationChance <= Math.random()) break;
+                    if(regenerationChance <= 1) break;
                 }
 
                 emojiPlaces.push([x, y, halfImageSize]);

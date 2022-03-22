@@ -2,7 +2,7 @@
  * @name RemoveBlockedUsers
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 1.3.7
+ * @version 1.4.0
  * @description Removes blocked Messages/Users
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -17,25 +17,17 @@ module.exports = (_ => {
 		"info": {
 			"name": "RemoveBlockedUsers",
 			"author": "DevilBro",
-			"version": "1.3.7",
+			"version": "1.4.0",
 			"description": "Removes blocked Messages/Users"
 		},
 		"changeLog": {
 			"fixed": {
-				"Server Notifications": "No longer kills all server notification icons"
+				"Offline List": "Fixed Issue where switching between servers would remove more and more users from the offline list if someone was blocked"
 			}
 		}
 	};
 
-	return (window.Lightcord && !Node.prototype.isPrototypeOf(window.Lightcord) || window.LightCord && !Node.prototype.isPrototypeOf(window.LightCord) || window.Astra && !Node.prototype.isPrototypeOf(window.Astra)) ? class {
-		getName () {return config.info.name;}
-		getAuthor () {return config.info.author;}
-		getVersion () {return config.info.version;}
-		getDescription () {return "Do not use LightCord!";}
-		load () {BdApi.alert("Attention!", "By using LightCord you are risking your Discord Account, due to using a 3rd Party Client. Switch to an official Discord Client (https://discord.com/) with the proper BD Injection (https://betterdiscord.app/)");}
-		start() {}
-		stop() {}
-	} : !window.BDFDB_Global || (!window.BDFDB_Global.loaded && !window.BDFDB_Global.started) ? class {
+	return !window.BDFDB_Global || (!window.BDFDB_Global.loaded && !window.BDFDB_Global.started) ? class {
 		getName () {return config.info.name;}
 		getAuthor () {return config.info.author;}
 		getVersion () {return config.info.version;}
@@ -310,7 +302,7 @@ module.exports = (_ => {
 			}
 			
 			processReactions (e) {
-				if (this.settings.places.reactions && e.returnvalue.props.children && BDFDB.ArrayUtils.is(e.returnvalue.props.children[0])) {
+				if (this.settings.places.reactions && e.returnvalue && e.returnvalue.props.children && BDFDB.ArrayUtils.is(e.returnvalue.props.children[0])) {
 					let updateTimeout, relationshipCount = BDFDB.LibraryModules.RelationshipStore.getRelationshipCount();
 					if (cachedChannelId != e.instance.props.message.channel_id) {
 						cachedReactions = {};
@@ -359,14 +351,15 @@ module.exports = (_ => {
 		
 			processChannelMembers (e) {
 				if (this.settings.places.memberList) {
+					let hiddenRows = 0, newRows = new Array(e.instance.props.rows.length), newGroups = new Array(e.instance.props.groups.length);
 					e.instance.props.groups = [].concat(e.instance.props.groups);
 					e.instance.props.rows = [].concat(e.instance.props.rows);
-					let newRows = [], newGroups = [];
 					for (let i in e.instance.props.rows) {
 						let row = e.instance.props.rows[i];
 						if (!row || row.type != "MEMBER") newRows[i] = row;
 						else if (!row.user || !BDFDB.LibraryModules.RelationshipStore.isBlocked(row.user.id)) newRows[i] = row;
 						else {
+							hiddenRows++;
 							let found = false, rowIndex = i - 1;
 							while (!found && rowIndex > -1) {
 								if (newRows[rowIndex] && newRows[rowIndex].type == "GROUP") {
@@ -381,16 +374,32 @@ module.exports = (_ => {
 							}
 						}
 					}
-					let indexSum = 0;
-					for (let i in e.instance.props.groups) {
-						newGroups[i] = Object.assign({}, e.instance.props.groups[i], {index: indexSum});
-						if (e.instance.props.groups[i].count > 0) indexSum += (e.instance.props.groups[i].count + 1);
+					if (hiddenRows) {
+						let indexSum = 0;
+						for (let i in e.instance.props.groups) {
+							newGroups[i] = Object.assign({}, e.instance.props.groups[i], {index: indexSum});
+							if (e.instance.props.groups[i].count > 0) indexSum += (e.instance.props.groups[i].count + 1);
+						}
+						for (let i in newRows) if (newRows[i] && newRows[i].type == "GROUP" && newRows[i].count <= 0) {
+							hiddenRows++;
+							newRows[i] = undefined;
+						}
+						const removeEmptyWithin = (array, filter) => {
+							let reversed = [].concat(array).reverse();
+							let prefixLength = 0, suffixLength = 0;
+							for (let i in array) if (array[i] !== undefined) {
+								prefixLength = parseInt(i);
+								break;
+							}
+							for (let i in reversed) if (reversed[i] !== undefined) {
+								suffixLength = parseInt(i);
+								break;
+							}
+							return [].concat(new Array(prefixLength), array.filter(filter), new Array(suffixLength))
+						};
+						e.instance.props.rows = removeEmptyWithin(newRows, n => n);
+						e.instance.props.groups = removeEmptyWithin(newGroups, g => g && g.count > 0);
 					}
-					if (e.instance.props.rows.length > 2000 && !window.a) window.a = e.instance.props.rows;
-					
-					for (let i in newRows) if (newRows[i] && newRows[i].type == "GROUP" && newRows[i].count <= 0) newRows[i] = null;
-					e.instance.props.groups = newGroups.filter(g => g && g.count > 0);
-					e.instance.props.rows = newRows;
 				}
 			}
 			
@@ -424,15 +433,16 @@ module.exports = (_ => {
 					}
 					else {
 						if (!e.instance.props.channel.name) {
-							if (typeof e.returnvalue.props.children == "function") {
-								let childrenRender = e.returnvalue.props.children;
-								e.returnvalue.props.children = BDFDB.TimeUtils.suppress((...args) => {
+							let wrapper = e.returnvalue && e.returnvalue.props.children && e.returnvalue.props.children.props && typeof e.returnvalue.props.children.props.children == "function" ? e.returnvalue.props.children : e.returnvalue;
+							if (typeof wrapper.props.children == "function") {
+								let childrenRender = wrapper.props.children;
+								wrapper.props.children = BDFDB.TimeUtils.suppress((...args) => {
 									let children = childrenRender(...args);
 									children.props.name = BDFDB.ReactUtils.createElement("span", {children: this.getGroupName(e.instance.props.channel.id)});
 									return children;
 								}, "", this);
 							}
-							else e.returnvalue.props.name = BDFDB.ReactUtils.createElement("span", {children: this.getGroupName(e.instance.props.channel.id)});
+							else wrapper.props.name = BDFDB.ReactUtils.createElement("span", {children: this.getGroupName(e.instance.props.channel.id)});
 						}
 					}
 				}
